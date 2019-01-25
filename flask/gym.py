@@ -1,11 +1,7 @@
 import requests
-import geocoder
+from location import cur_geo
 
 API_KEY = 'AIzaSyBYfqJspGhr-SSfdTJ-82o71Izkhe00JnI'
-
-def cur_geo():
-    latlng = [str(x) for x in geocoder.ip('me').latlng]
-    return latlng[0] + ',' + latlng[1]
 
 def get_gym_photo(photos):
     photo = str(photos[0]['html_attributions'])
@@ -17,7 +13,6 @@ def search_gyms_by_name(name):
     location = cur_geo()
     url = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
     'location={0}&rankby=distance&type=gym&name={1}&key={2}').format(location, name, API_KEY)
-    print(url)
     res = requests.get(url).json()
     gyms = {}
     count = 0
@@ -33,5 +28,3 @@ def search_gyms_by_name(name):
         count += 1
 
     return gyms
-
-search_gyms_by_name('blink')
