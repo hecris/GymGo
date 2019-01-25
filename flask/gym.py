@@ -17,8 +17,10 @@ def search_gyms_by_name(name):
     location = cur_geo()
     url = ('https://maps.googleapis.com/maps/api/place/nearbysearch/json?'
     'location={0}&rankby=distance&type=gym&name={1}&key={2}').format(location, name, API_KEY)
+    print(url)
     res = requests.get(url).json()
     gyms = {}
+    count = 0
     for r in res['results']:
         name = r['name']
         location = r['vicinity']
@@ -26,7 +28,10 @@ def search_gyms_by_name(name):
             photo = get_gym_photo(r['photos'])
         else:
             photo = None
-        gym_info = {'location': location, 'photo': photo}
-        gyms.setdefault(name, gym_info)
+        gym_info = {'name': name, 'location': location, 'photo': photo}
+        gyms.setdefault(count, gym_info)
+        count += 1
 
     return gyms
+
+search_gyms_by_name('blink')
