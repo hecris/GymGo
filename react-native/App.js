@@ -7,6 +7,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableHighlight,
+  Image,
 } from 'react-native';
 
 export default class HomeScreen extends React.Component {
@@ -23,7 +24,7 @@ export default class HomeScreen extends React.Component {
   __gymsearch() {
     var name = this.state.text;
     this.setState({ 'loading': true });
-    return fetch('https://weak-fly-40.localtunnel.me/gymsearch?name=' + name)
+    return fetch('https://foolish-catfish-93.localtunnel.me/gymsearch?name=' + name)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({ 'loading': false });
@@ -43,12 +44,16 @@ export default class HomeScreen extends React.Component {
     for (dummy in this.state.results) {
       gym = this.state.results[i];
       gyms.push(
-        <TouchableHighlight 
-        key={'gymRes' + i.toString()}
-        underlayColor='white'
-        onPress={() => Alert.alert('')}
-        style={styles.GymCard}>
+        <TouchableHighlight
+          key={'gymRes' + i.toString()}
+          underlayColor='white'
+          onPress={() => Alert.alert('')}
+          style={styles.GymCard}>
           <View>
+            <Image
+              style={{ width: 'auto', height: 200 }}
+              source={{ uri: gym.photo }}
+            />
             <Text style={styles.GymName}>
               {gym.name}
             </Text>
@@ -75,11 +80,11 @@ export default class HomeScreen extends React.Component {
           GymGo
       </Text>
         <ScrollView>
-
           <TextInput
             onChangeText={(text) => this.setState({ text })}
             style={styles.searchTx}
             onSubmitEditing={this.__gymsearch.bind(this)}
+            placeholder='Gyms Near Me'
           />
 
           <Text style={styles.loadingLbl}>
@@ -139,6 +144,7 @@ const styles = StyleSheet.create({
 
   GymName: {
     fontSize: 22,
+    fontWeight: 'bold',
     color: 'green',
   },
 
