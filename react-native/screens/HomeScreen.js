@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
     __gymsearch() {
         var name = this.state.text;
         this.setState({ 'loading': true });
-        return fetch('https://soft-panda-28.localtunnel.me/gymsearch?name=' + name)
+        return fetch('https://tiny-bird-0.localtunnel.me/gymsearch?name=' + name)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ 'loading': false });
@@ -54,14 +54,19 @@ export default class HomeScreen extends React.Component {
 
     __showGyms() {
         var gyms = [];
-        var i = 0;
-        for (dummy in this.state.results) {
+        var res_count = Object.keys(this.state.results).length.toString();
+
+        for (let i = 0; i < res_count; i++) {
             gym = this.state.results[i];
             gyms.push(
                 <TouchableHighlight
                     key={'gymRes' + i.toString()}
                     underlayColor='white'
-                    onPress={() => Alert.alert('')}
+                    onPress={() => this.props.navigation.navigate('Gym', {
+                        name: this.state.results[i].name,
+                        location: this.state.results[i].location,
+                        photo: this.state.results[i].photo,
+                    })}
                     style={HomeScreenStyles.GymCard}>
                     <View>
                         <Image
@@ -77,7 +82,6 @@ export default class HomeScreen extends React.Component {
                     </View>
                 </TouchableHighlight>
             );
-            i++;
         }
 
         return gyms;

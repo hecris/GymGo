@@ -2,7 +2,7 @@ import {
     StyleSheet,
 } from 'react-native';
 
-export default styles = StyleSheet.create({
+export default HomeScreenStyles = StyleSheet.create({
   
     searchTx: {
       fontSize: 18,
