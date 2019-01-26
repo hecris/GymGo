@@ -19,7 +19,7 @@ def search_gyms_by_name(name):
         photo = get_gym_photo(photo_reference)
         lat = r['geometry']['location']['lat']
         lng = r['geometry']['location']['lng']
-        geo = (lat, lng)
+        geo = str(lat) + ',' + str(lng)
         gym_info = {'name': name, 'location': location,
                     'photo': photo, 'geo': geo}
         gyms.setdefault(count, gym_info)

@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
     __gymsearch() {
         var name = this.state.text;
         this.setState({ 'loading': true });
-        return fetch('https://tiny-bird-0.localtunnel.me/gymsearch?name=' + name)
+        return fetch('https://fresh-rabbit-0.localtunnel.me/gymsearch?name=' + name)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ 'loading': false });
@@ -66,6 +66,7 @@ export default class HomeScreen extends React.Component {
                         name: this.state.results[i].name,
                         location: this.state.results[i].location,
                         photo: this.state.results[i].photo,
+                        geo: this.state.results[i].geo,
                     })}
                     style={HomeScreenStyles.GymCard}>
                     <View>
