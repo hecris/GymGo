@@ -43,4 +43,4 @@ def distance_btwn_user(gymlatlng):
         return 'Not a valid geo'
     me = cur_geo()
     gymlatlng = string_to_latlng(gymlatlng)
-    return distance_btwn(me, gymlatlng)
+    return round(distance_btwn(me, gymlatlng) * 100, 2)

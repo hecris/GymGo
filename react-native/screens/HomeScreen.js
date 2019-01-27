@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
     __gymsearch() {
         var name = this.state.text;
         this.setState({ 'loading': true });
-        return fetch('https://fresh-rabbit-0.localtunnel.me/gymsearch?name=' + name)
+        return fetch('https://smart-dolphin-9.localtunnel.me/gymsearch?name=' + name)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ 'loading': false });

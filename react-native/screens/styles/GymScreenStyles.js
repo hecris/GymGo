@@ -33,6 +33,13 @@ export default GymScreenStyles = StyleSheet.create({
 
   TrackBtnLbl: {
     fontWeight: 'bold',
-    fontSize: 24,
-  }
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'green',
+  },
+
+  DistanceLbl: {
+    textAlign: 'center',
+    fontSize: 18,
+  },
 });
