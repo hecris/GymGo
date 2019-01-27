@@ -21,19 +21,17 @@ export default GymScreenStyles = StyleSheet.create({
   },
 
   TrackBtn: {
-    width: 250,
-    height: 250,
-    marginTop: 50,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    borderWidth: 10,
-    borderRadius: 125,
-    padding: 50,
+    width: 200,
+    height: 200,
+    borderWidth: 1,
+    borderRadius: 100,
+    padding: 27,
+    backgroundColor: 'white',
   },
 
   TrackBtnLbl: {
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 24,
     textAlign: 'center',
     color: 'green',
   },
@@ -42,4 +40,16 @@ export default GymScreenStyles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
+
+  Outer: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 140,
+    height: 280,
+    width: 280,
+    marginTop: 25,
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: 40,
+  }
 });

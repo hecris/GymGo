@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     Alert,
+    Animated,
     Text,
     View,
     Image,
@@ -14,6 +15,7 @@ export default class GymScreen extends React.Component {
         this.state = {
             track: 'Check In!',
             distance: '...',
+            trackColor: 'lightgray',
         };
 
         this.interval = setInterval(() => {
@@ -21,7 +23,7 @@ export default class GymScreen extends React.Component {
         }, 5000);
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.__findDistanceBtwn();
     }
 
@@ -32,7 +34,7 @@ export default class GymScreen extends React.Component {
     __findDistanceBtwn() {
         // Alert.alert('hello');
         const gymGeo = this.props.navigation.getParam('geo', '');
-        return fetch('https://rotten-frog-63.localtunnel.me/distancetogym?gymlatlng=' + gymGeo)
+        return fetch('https://warm-hound-12.localtunnel.me/distancetogym?gymlatlng=' + gymGeo)
             .then((response) => response.json())
             .then((responseJson) => {
                 return JSON.stringify(responseJson);
@@ -69,29 +71,34 @@ export default class GymScreen extends React.Component {
                     </Text>
 
                 </View>
-                <TouchableHighlight
-                    style={[GymScreenStyles.TrackBtn, {
-                        borderColor: 'green',
-                    }]}
-                    underlayColor='whitesmoke'
-                    onPress={() => this.__findDistanceBtwn()}>
-                    <View>
-                        <Text style={GymScreenStyles.DistanceLbl}>
-                            You are {' '}
-                        <Text style={{
-                            fontWeight: 'bold',
-                            color: 'green',
-                            fontSize: 20,
+                <View style={[GymScreenStyles.Outer,
+                {
+                    backgroundColor: this.state.trackColor,
+                }]}>
+                    <TouchableHighlight
+                        style={GymScreenStyles.TrackBtn}
+                        underlayColor='white'
+                        onPress={() => {
+                            this.setState({'trackColor': 'green'})
                         }}>
-                                {this.state.distance}
-                            </Text>
-                            {' '} km away
+                        <View>
+                            <Text style={GymScreenStyles.DistanceLbl}>
+                                You are {' '}
+                                <Text style={{
+                                    fontWeight: 'bold',
+                                    color: 'green',
+                                    fontSize: 20,
+                                }}>
+                                    {this.state.distance}
+                                </Text>
+                                {' '} km away
                 </Text>
-                        <Text style={GymScreenStyles.TrackBtnLbl}>
-                            {this.state.track}
-                        </Text>
-                    </View>
-                </TouchableHighlight>
+                            <Text style={GymScreenStyles.TrackBtnLbl}>
+                                {this.state.track}
+                            </Text>
+                        </View>
+                    </TouchableHighlight>
+                </View>
             </View>
         );
     }
