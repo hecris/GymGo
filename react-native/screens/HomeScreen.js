@@ -11,6 +11,7 @@ import {
 
 import HomeScreenStyles from './styles/HomeScreenStyles.js';
 import Header from './Header.js';
+import * as API_URL from './API_URL.js';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -38,7 +39,7 @@ export default class HomeScreen extends React.Component {
     __gymsearch() {
         var name = this.state.text;
         this.setState({ 'loading': true });
-        return fetch('https://warm-hound-12.localtunnel.me/gymsearch?name=' + name)
+        return fetch(API_URL.API_URL + '/gymsearch?name=' + name)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ 'loading': false });

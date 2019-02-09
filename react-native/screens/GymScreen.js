@@ -8,6 +8,7 @@ import {
     TouchableHighlight,
 } from 'react-native';
 import GymScreenStyles from './styles/GymScreenStyles.js';
+import * as API_URL from './API_URL.js';
 
 export default class GymScreen extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class GymScreen extends React.Component {
     __findDistanceBtwn() {
         // Alert.alert('hello');
         const gymGeo = this.props.navigation.getParam('geo', '');
-        return fetch('https://warm-hound-12.localtunnel.me/distancetogym?gymlatlng=' + gymGeo)
+        return fetch(API_URL.API_URL + '/distancetogym?gymlatlng=' + gymGeo)
             .then((response) => response.json())
             .then((responseJson) => {
                 return JSON.stringify(responseJson);

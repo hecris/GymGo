@@ -10,7 +10,7 @@ const App = createStackNavigator(
     Shop: { screen: ShopScreen },
   },
   {
-    initialRouteName: 'Shop'
+    initialRouteName: 'Home'
   },
 );
 
