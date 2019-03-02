@@ -1,7 +1,7 @@
 import requests
 from location import *
 
-API_KEY = 'AIzaSyBYfqJspGhr-SSfdTJ-82o71Izkhe00JnI'
+API_KEY = 'OMITTED'
 
 def search_gyms_by_name(name):
     if name == '':
