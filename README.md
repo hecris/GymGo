@@ -27,5 +27,5 @@ npx localtunnel --port {the port which the Flask app is running on}
 ```
 This will output a URL to your backend, paste that into API_URL.js Finally, run
 ```
-npm run
+npm start
 ```
