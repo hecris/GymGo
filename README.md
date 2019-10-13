@@ -21,6 +21,7 @@ Note: You need a Google Maps API Key, insert that into gym.py
 
 3) Get the React Native app running. Open a new window and run the following commands
 ```
+cd ../frontend
 npm install
 npx localtunnel --port {the port which the Flask app is running on}
 ```
