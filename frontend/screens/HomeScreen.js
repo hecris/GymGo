@@ -14,18 +14,21 @@ import Header from './Header.js';
 import * as API_URL from './API_URL.js';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
+    static navigationOptions = ({ navigation }) => ({
         // headerTitle instead of title
         headerTitle:
-            <View style={{
+			<TouchableHighlight style={{
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 flex: 1,
-            }}>
+            }}
+			onPress={() => navigation.navigate('Shop', {})}>
+            <View>
                 <Header title='GymGo' />
             </View>
+			</TouchableHighlight>
         ,
-    };
+    });
 
     constructor(props) {
         super(props);
