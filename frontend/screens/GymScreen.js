@@ -92,7 +92,7 @@ export default class GymScreen extends React.Component {
                                 }}>
                                     {this.state.distance}
                                 </Text>
-                                {' '} km away
+                                {' '} meters away
                 </Text>
                             <Text style={GymScreenStyles.TrackBtnLbl}>
                                 {this.state.track}
